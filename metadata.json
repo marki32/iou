@@ -1,0 +1,7 @@
+{
+  "name": "Identify.ai",
+  "description": "A minimal, soft-aesthetic image identification app powered by Gemini 3 Pro for analysis and Gemini 2.5 Flash for real-time web search.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

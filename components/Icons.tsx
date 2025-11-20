@@ -1,0 +1,22 @@
+import { Upload, Camera, Search, ArrowLeft, Loader2, X, ExternalLink, Sparkles, Globe, Zap, ChevronRight, Share, ScanLine, Brain, Github, Twitter, Heart, Clock, Copy, Check } from 'lucide-react';
+
+export const UploadIcon = ({ className }: { className?: string }) => <Upload className={className} />;
+export const CameraIcon = ({ className }: { className?: string }) => <Camera className={className} />;
+export const SearchIcon = ({ className }: { className?: string }) => <Search className={className} />;
+export const BackIcon = ({ className }: { className?: string }) => <ArrowLeft className={className} />;
+export const LoadingIcon = ({ className }: { className?: string }) => <Loader2 className={`animate-spin ${className}`} />;
+export const CloseIcon = ({ className }: { className?: string }) => <X className={className} />;
+export const LinkIcon = ({ className }: { className?: string }) => <ExternalLink className={className} />;
+export const SparklesIcon = ({ className }: { className?: string }) => <Sparkles className={className} />;
+export const GlobeIcon = ({ className }: { className?: string }) => <Globe className={className} />;
+export const ZapIcon = ({ className }: { className?: string }) => <Zap className={className} />;
+export const ChevronRightIcon = ({ className }: { className?: string }) => <ChevronRight className={className} />;
+export const ShareIcon = ({ className }: { className?: string }) => <Share className={className} />;
+export const ScanLineIcon = ({ className }: { className?: string }) => <ScanLine className={className} />;
+export const BrainIcon = ({ className }: { className?: string }) => <Brain className={className} />;
+export const GithubIcon = ({ className }: { className?: string }) => <Github className={className} />;
+export const TwitterIcon = ({ className }: { className?: string }) => <Twitter className={className} />;
+export const HeartIcon = ({ className }: { className?: string }) => <Heart className={className} />;
+export const ClockIcon = ({ className }: { className?: string }) => <Clock className={className} />;
+export const CopyIcon = ({ className }: { className?: string }) => <Copy className={className} />;
+export const CheckIcon = ({ className }: { className?: string }) => <Check className={className} />;

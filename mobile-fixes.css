@@ -1,0 +1,95 @@
+/* Mobile-specific responsive fixes for Identify.ai */
+
+/* Prevent horizontal scrolling on mobile */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Mobile breakpoint fixes */
+@media (max-width: 768px) {
+  /* Hide decorative SVG blobs that break mobile layout */
+  svg[viewBox="0 0 200 200"] {
+    display: none !important;
+  }
+  
+  /* Reduce background gradient blob sizes */
+  .absolute.rounded-full.blur-\[100px\] {
+    width: 30vw !important;
+    height: 30vw !important;
+    opacity: 0.2 !important;
+  }
+  
+  /* Ensure all content stays within viewport */
+  * {
+    max-width: 100vw;
+  }
+  
+  /* Fix landing page hero section */
+  .min-h-screen {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
+  /* Improve touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better mobile typography */
+  h1 {
+    font-size: clamp(2rem, 8vw, 4rem) !important;
+  }
+  
+  /* Fix image upload area */
+  .flex.flex-col.items-center {
+    padding: 1rem;
+  }
+  
+  /* Ensure proper spacing on mobile */
+  .px-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* Extra small devices (phones in portrait) */
+@media (max-width: 480px) {
+  /* Further reduce decorative elements */
+  .absolute.rounded-full {
+    opacity: 0.1 !important;
+  }
+  
+  /* Compact navigation */
+  nav {
+    padding: 0.5rem 1rem !important;
+  }
+  
+  /* Stack elements vertically */
+  .md\:flex-row {
+    flex-direction: column !important;
+  }
+}
+
+/* Fix WebView-specific issues */
+@supports (-webkit-touch-callout: none) {
+  /* iOS WebView fixes */
+  body {
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  input, textarea, button {
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+}
+
+/* Android WebView fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select, textarea, input {
+    font-size: 16px !important; /* Prevents zoom on focus */
+  }
+}
