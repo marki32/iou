@@ -1,7 +1,13 @@
 import { GoogleGenAI } from "@google/genai";
 import { AnalysisResult, SearchResult, GroundingChunk } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = process.env.API_KEY;
+
+if (!apiKey) {
+  console.error("Gemini API Key is missing. Please check your .env.local file and ensure GEMINI_API_KEY is set.");
+}
+
+const ai = new GoogleGenAI({ apiKey: apiKey || '' });
 
 /**
  * Analyzes an image using Gemini 3 Pro Preview.
@@ -10,7 +16,7 @@ const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 export const analyzeImage = async (base64Image: string, mimeType: string = 'image/jpeg'): Promise<AnalysisResult> => {
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-3-pro-preview',
+      model: 'gemini-flash-lite-latest',
       contents: {
         parts: [
           {
@@ -35,7 +41,7 @@ export const analyzeImage = async (base64Image: string, mimeType: string = 'imag
     });
 
     const fullText = response.text || "Could not analyze image.";
-    
+
     // Parse out the search query if it exists
     const splitParts = fullText.split('SEARCH_QUERY:');
     const description = splitParts[0].trim();
@@ -65,7 +71,7 @@ export const searchWeb = async (query: string): Promise<SearchResult> => {
     });
 
     const groundingChunks = response.candidates?.[0]?.groundingMetadata?.groundingChunks as GroundingChunk[] | undefined;
-    
+
     const sources = groundingChunks
       ?.map(chunk => chunk.web)
       .filter((web): web is { uri: string; title: string } => !!web) || [];

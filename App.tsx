@@ -50,9 +50,16 @@ const App: React.FC = () => {
           setIsSearching(false);
         }
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      setError("Sorry, I couldn't analyze that image. Please try again.");
+      let errorMessage = "Sorry, I couldn't analyze that image. Please try again.";
+
+      const errString = err.toString() + JSON.stringify(err);
+      if (errString.includes("API key") || errString.includes("API_KEY_INVALID")) {
+        errorMessage = "Invalid Gemini API Key. Please check your .env.local file.";
+      }
+
+      setError(errorMessage);
       setState(AppState.IDLE);
       setImage(null);
     }
